@@ -10,7 +10,7 @@ public class Pitcher {
 
 	public static int messageId = 1;
 	public static Session session = new Session();
-
+	
 	private static Timer timer = new Timer();
 	private static Receiver reciever = null;
 
@@ -20,7 +20,7 @@ public class Pitcher {
 		String hostname = arguments.getHostname();
 		int mps = arguments.getMps();
 		int messageSize = arguments.getSize();
-
+		
 		try {
 			Socket socket = new Socket(hostname, portNumber);
 

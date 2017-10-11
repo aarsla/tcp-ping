@@ -7,12 +7,12 @@ import java.io.*;
 public class Catcher {
 
 	protected ServerSocket serverSocket = null;
-
+	
 	public Catcher(Arguments arguments) {
 
 		int serverPort = arguments.getPort();
 		String bindAddress = arguments.getBindAddress();
-				
+		
 		try {
 			InetAddress address = InetAddress.getByName(bindAddress);
 			serverSocket = new ServerSocket(serverPort, 0, address);

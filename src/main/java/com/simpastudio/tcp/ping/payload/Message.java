@@ -1,5 +1,7 @@
 package com.simpastudio.tcp.ping.payload;
 
+import com.simpastudio.tcp.ping.TCPPing;
+
 public class Message {
 
 	/*
@@ -14,9 +16,9 @@ public class Message {
 	
 	private int id = 1;
 	private int size = 300;
-	private long senderTime = System.currentTimeMillis();
-	private long catcherTime = System.currentTimeMillis();
-	private long receiverTime = System.currentTimeMillis();
+	private long senderTime = System.currentTimeMillis() + TCPPing.ntpTimeOffset;
+	private long catcherTime = System.currentTimeMillis() + TCPPing.ntpTimeOffset;
+	private long receiverTime = System.currentTimeMillis() + TCPPing.ntpTimeOffset;
 
 	public Message(int id, int size) {
 		this.id = id;

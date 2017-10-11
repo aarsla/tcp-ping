@@ -1,5 +1,6 @@
 package com.simpastudio.tcp.ping.pitcher;
 
+import com.simpastudio.tcp.ping.TCPPing;
 import com.simpastudio.tcp.ping.payload.Message;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +31,7 @@ public class Receiver extends Thread {
 				while ((read = inputStream.read(buffer)) != -1) {
 					String stringData = new String(buffer, 0, read);
 					Message message = new Message(stringData);
-					message.setReceiverTime(System.currentTimeMillis());
+					message.setReceiverTime(System.currentTimeMillis()+TCPPing.ntpTimeOffset);
 
 					//System.out.println("Received: " + message.getId() + "\t| " + message.byteSize() + " bytes");
 
