@@ -4,6 +4,8 @@ import com.simpastudio.tcp.ping.TCPPing;
 
 public class Message {
 
+	public static enum Action { CONNECT, MSG, DISCONNECT };
+	
 	/*
 	 * Packet structure 
 	 * +--------+----+------------+-------------+--------------+---------+
@@ -16,6 +18,7 @@ public class Message {
 	
 	private int id = 1;
 	private int size = 300;
+	
 	private long senderTime = System.currentTimeMillis() + TCPPing.ntpTimeOffset;
 	private long catcherTime = System.currentTimeMillis() + TCPPing.ntpTimeOffset;
 	private long receiverTime = System.currentTimeMillis() + TCPPing.ntpTimeOffset;
@@ -80,7 +83,7 @@ public class Message {
 		if (packet.getBytes().length < this.size) {
 			String extraPayload = "";
 			for (int i = packet.getBytes().length; i <= this.size - 2; i++) {
-				extraPayload += "1";
+				extraPayload += "X";
 			}
 			
 			packet = packet + delimiter + extraPayload;
