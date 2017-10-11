@@ -43,7 +43,7 @@ public class Worker extends Thread {
 					String inputMessage = inputStream.readUTF();
 					Message message = new Message(inputMessage);
 
-					System.out.println("Processing: " + message.getId() + "\t| " + message.byteSize() + " bytes");
+					// System.out.println("Processing: " + message.getId() + "\t| " + message.byteSize() + " bytes");
 
 					message.setCatcherTime(System.currentTimeMillis() + TCPPing.ntpTimeOffset);
 					outputStream.writeUTF(message.packet());
