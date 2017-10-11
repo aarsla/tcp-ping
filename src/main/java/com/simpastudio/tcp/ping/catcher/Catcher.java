@@ -19,9 +19,9 @@ public class Catcher {
 			
 			System.out.println("Catcher is listening on " + bindAddress + ":"+ serverPort);
 			
-			while (true) {
-				new Worker(serverSocket.accept()).run();				
-			}
+			do {
+	            new Worker(serverSocket.accept()).run();
+	         } while (true);
 		} catch (IOException e) {
 			System.err.println(e.getCause().getLocalizedMessage());
 		}

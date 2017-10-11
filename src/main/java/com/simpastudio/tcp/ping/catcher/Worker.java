@@ -17,14 +17,18 @@ public class Worker extends Thread {
 
 	@Override
 	public void run() {
+		
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		
 		try {
 			System.out.println("Client connected.");
 
 			long startTime = System.currentTimeMillis();
 			byte[] buffer = new byte[3000];
 
-			InputStream inputStream = socket.getInputStream();
-			OutputStream outputStream = socket.getOutputStream();
+			inputStream = socket.getInputStream();
+			outputStream = socket.getOutputStream();
 
 			int readBytes;
 			int totalBytesRead = 0;
@@ -52,13 +56,23 @@ public class Worker extends Thread {
 			System.out.println("Processed " + numberOfMessages + " messages with total of " + totalBytesRead
 					+ " bytes in " + (endTime - startTime) + " ms.");
 
-			outputStream.close();
-			inputStream.close();
-			socket.close();
-
-			System.out.println("Connection closed.");
 		} catch (IOException e) {
 			System.err.println("IO Error: " + e.getCause().getLocalizedMessage());
+		} finally {
+			System.out.println ("Closing Connection...\n");
+			
+			try {
+				if (inputStream != null) 
+					inputStream.close();
+				
+				if (outputStream != null) 
+					outputStream.close();
+				
+				if (socket != null)
+					socket.close();
+			} catch (IOException e) {
+				System.err.println("IO Error: " + e.getCause().getLocalizedMessage());
+			}
 		}
 	}
 }

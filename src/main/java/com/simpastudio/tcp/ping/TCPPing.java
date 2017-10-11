@@ -2,7 +2,6 @@ package com.simpastudio.tcp.ping;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
@@ -19,7 +18,7 @@ import com.simpastudio.tcp.ping.pitcher.Pitcher;
 public class TCPPing {
 	
 	public static long ntpTimeOffset = 0;
-	public static void main(String[] args) throws UnknownHostException, IOException {
+	public static void main(String[] args) throws IOException {
 
 		Arguments arguments = new Arguments();
 		JCommander.newBuilder().addObject(arguments).build().parse(args);
