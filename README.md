@@ -1,4 +1,4 @@
-# TCP Ping
+# Installation
 
 ```
 mvn package
