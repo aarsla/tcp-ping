@@ -18,6 +18,7 @@ import com.simpastudio.tcp.ping.pitcher.Pitcher;
 public class TCPPing {
 	
 	public static long ntpTimeOffset = 0;
+	
 	public static void main(String[] args) throws IOException {
 
 		Arguments arguments = new Arguments();

@@ -35,7 +35,7 @@ public class Pitcher {
 			System.out.println("Sending packets of " + messageSize + " bytes to " + hostname + " at a rate of " + mps + " mps:");
 
 			timer.schedule(new Sender(socket, messageSize), 0, 1000/mps);
-			timer.schedule(new Stats(), 1100, 1 * 1000);
+			timer.schedule(new Stats(), 0, 1 * 1000);
 		} catch (UnknownHostException e) {
 			System.err.println("Unknown host: " + e.getCause().getLocalizedMessage());
 		} catch (IOException e) {
@@ -44,6 +44,7 @@ public class Pitcher {
 	}
 	
 	private void registerCleanup() {
+		
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 		    public void run() { 
 		    		try {
